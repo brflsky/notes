@@ -2,7 +2,8 @@
   "name": "short-lnk",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "test": "meteor test --driver-package=practicalmeteor:mocha"
   },
   "dependencies": {
     "babel-runtime": "6.18.0",
@@ -15,5 +16,16 @@
   },
   "engines": {
     "node": "4.6.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-meteor": "^4.2.0",
+    "eslint-plugin-react": "^7.7.0",
+    "expect": "^1.20.2"
   }
 }

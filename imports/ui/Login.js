@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
 
-export default class Login extends React.Component {
+export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,14 +13,14 @@ export default class Login extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    let email = this.refs.email.value.trim();
-    let password = this.refs.password.value.trim();
+    const email = this.refs.email.value.trim();
+    const password = this.refs.password.value.trim();
 
-    Meteor.loginWithPassword({email}, password, (err) => {
+    this.props.loginWithPassword({ email }, password, (err) => {
       if (err) {
-        this.setState({error: 'Unable to login. Check email and password.'});
+        this.setState({ error: 'Unable to login. Check email and password.' });
       } else {
-        this.setState({error: ''});
+        this.setState({ error: '' });
       }
     });
   }
@@ -32,8 +33,8 @@ export default class Login extends React.Component {
           {this.state.error ? <p>{this.state.error}</p> : undefined}
 
           <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view__form">
-            <input type="email" ref="email" name="email" placeholder="Email"/>
-            <input type="password" ref="password" name="password" placeholder="Password"/>
+            <input type="email" ref="email" name="email" placeholder="Email" />
+            <input type="password" ref="password" name="password" placeholder="Password" />
             <button className="button">Login</button>
           </form>
 
@@ -43,3 +44,13 @@ export default class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  loginWithPassword: React.PropTypes.func.isRequired
+};
+
+export default createContainer(() => {
+  return {
+    loginWithPassword: Meteor.loginWithPassword
+  };
+}, Login);

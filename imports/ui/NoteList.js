@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Session } from 'meteor/session';
 
 import { Notes } from '../api/notes';
 import NoteListHeader from './NoteListHeader';
@@ -27,10 +28,12 @@ NoteList.propTypes = {
 };
 
 export default createContainer(() => {
+  // const selectedNoteId = ;
   Meteor.subscribe('notes');
 
   return {
     notes: Notes.find().fetch()
+      .map(note => ({ ...note, selected: Session.get('selectedNoteId') === note._id }))
   };
 }, NoteList);
 

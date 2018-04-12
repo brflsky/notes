@@ -3,25 +3,11 @@ import React from 'react';
 import expect from 'expect';
 import { mount } from 'enzyme';
 import { NoteList } from './NoteList';
+import { notes } from '../fixtures/fixtures';
 
 
 
 if (Meteor.isClient) {
-  const notes = [
-    {
-      _id: 'noteId1',
-      title: 'Note Title 1',
-      body: 'Note body 1',
-      userId: 'userId1'
-    },
-    {
-      _id: 'noteId2',
-      title: 'Note Title 2',
-      body: 'Note body 2',
-      userId: 'userId2'
-    }
-  ];
-
   describe('NoteList', () => {
     it('should generate NoteListItem for each note ', () => {
       const wrapper = mount(<NoteList notes={notes} />);

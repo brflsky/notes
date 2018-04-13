@@ -16,7 +16,7 @@ export class Editor extends React.Component {
     const currNoteId = this.props.note ? this.props.note._id : undefined;
     const prevNoteId = prevProps.note ? prevProps.note._id : undefined;
     if (currNoteId && currNoteId !== prevNoteId) {
-        this.setState({ title: this.props.note.title, body: this.props.note.body });
+      this.setState({ title: this.props.note.title, body: this.props.note.body });
     }
   }
   handlerBodyOnChange = (e) => {
@@ -34,14 +34,18 @@ export class Editor extends React.Component {
   render() {
     if (this.props.note) {
       return (
-        <div>
+        <div className="editor">
           <input value={this.state.title} ref="title" placeholder="Note's title goes here" onChange={this.handlerTitleOnChange} />
           <textarea value={this.state.body} ref="body" placeholder="Your note goes here" onChange={this.handlerBodyOnChange} />
           <button onClick={this.handlerNoteRemove}>X</button>
         </div>
       );
     } else if (this.props.selectedNoteId) {
-      return <p>Note not found</p>;
+      return (
+        <div className="editor">
+          <p>Note not found</p>;
+        </div>
+      );
     }
 
     return <p>Pick or create a note</p>;

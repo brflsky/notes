@@ -42,6 +42,7 @@
         "no-unused-vars": 0,
         "no-multiple-empty-lines": "off",
         "react/jsx-filename-extension": 0,
+        "react/no-did-update-set-state": 0,
         "react/no-typos": 0,
         "indent": [
             "off",

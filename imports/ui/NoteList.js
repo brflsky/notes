@@ -16,7 +16,6 @@ const renderNotes = (notes) => {
 export const NoteList = (props) => {
   return (
     <div className="item-list">
-      <div>Note List {props.notes.length}</div>
       <NoteListHeader />
       {renderNotes(props.notes) || <NoteListEmptyItem />}
     </div>

@@ -3,16 +3,41 @@
   height: $page-content-height;
   margin: 0 auto;
   max-width: $site-max-width;
-  padding: $large-space $space;
+
+  @include desktop {
+    padding: $large-space $space;
+  }
 }
 
 .page-content__sidebar {
+  width: 100vw;
+  transition: left .3s ease;
+
   display: flex;
-  width: $page-content-sidebar-width;
-  padding: 0 $large-space 0 0;
+  position: fixed;
+  top: $header-height;
+  bottom: 0;
+  left: -100vw;
+
+
+  @include desktop() {
+    display: flex;
+    padding: 0 $large-space 0 0;
+    position: static;
+    width: $page-content-sidebar-width;
+  }
 }
+
+.is-nav-open .page-content__sidebar {
+  left: 0px;
+}
+
 
 .page-content__main {
   display: flex;
-  width: $page-content-main-width
+  width: 100%;
+
+  @include desktop {
+    width: $page-content-main-width
+  }
 }

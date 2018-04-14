@@ -1,0 +1,9 @@
+@mixin funkyBG($bgc: yellow) {
+  background-color: $bgc;
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
